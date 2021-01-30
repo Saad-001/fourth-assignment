@@ -86,6 +86,31 @@ nav ul li a:hover, a.active{
     font-size: 15px;
 }
 
+.greetings-for-book{
+    display: none;
+    margin: 150px auto;
+    padding: 50px;
+    border-radius: 5px;
+    background-color: rgba(216, 191, 216, 0.699);
+}
+
+.success-icon{
+    font-size: 35px;
+}
+
+.confirmation{
+    margin-bottom: 35px;
+    color: rgb(52, 179, 52);
+}
+
+.greetings{
+    color: #333;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* end of extra added css */
+
 .booking-form  .calculations{
     margin: 10px 0;
 }

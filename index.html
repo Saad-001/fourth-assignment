@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Booking</title>
+    <script src="https://kit.fontawesome.com/901c8900ea.js" crossorigin="anonymous"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
@@ -28,7 +29,7 @@
 
     <!--Booking Section-->
     <main class="main-content container">
-        <div class="booking-form">
+        <div id="display-none" class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -97,9 +98,14 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="book-now-btn" class="btn-style">Book Now</button>
         </div>
-
+        <!-- extra added div for giving confirmation after booking -->
+        <div id="confirmation" class="greetings-for-book">
+            <h1 class="confirmation"><i class="success-icon far fa-check-circle"></i> You have successfully booked.</h1>
+            <h3 class="greetings">Thank you Sir, for booking our airlines ticket. Have a safe journey.</h3>
+        </div>
+        <!-- end of extra added div  -->
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
@@ -107,6 +113,7 @@
                 voluptatibus quam</p>
         </div>
         </section>
+
         <script>
             // start first class ticket related javascript code
             const countIncrease = document.getElementById("count-increase");
@@ -195,6 +202,12 @@
                 grandTotal = newSubtotal + vatIs;
                 totalAmount.innerText = grandTotal;
             }
+                // after booking effect
+            const bookNow = document.getElementById("book-now-btn");
+            bookNow.addEventListener("click", function(){
+                document.getElementById("display-none").style.display = "none";
+                document.getElementById("confirmation").style.display = "block";
+            })
 
         </script>
 
