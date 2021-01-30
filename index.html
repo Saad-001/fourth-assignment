@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <!-- Stylesheet -->
+    <!--stylesheet-->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -32,7 +32,7 @@
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
-                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+                <input class="inp-style" type="text" name="" placeholder="Dhaka, Bangladesh">
             </div>
             <div class="input-group">
                 <label for="">Flying To</label>
@@ -41,7 +41,7 @@
             <div class="inputs">
                 <div class="input-group">
                     <label" for="">Departure</label>
-                    <input class="inp-style" type="date" name="">
+                        <input class="inp-style" type="date" name="">
                 </div>
                 <div class="input-group">
                     <label for="">Return</label>
@@ -50,21 +50,23 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label for="">First Class ($150)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label for="">First Class ($<span id="f-class-price">150</span>)</label>
+                    <input id="f-class-input" class="inp-style inp-width" type="number" value="0" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p>+ -</p>
+                    <button id="count-increase" class="btn"> + </button>
+                    <button id="count-decrease" class="btn"> - </button>
                 </div>
             </div>
-            
+
             <div class="input-group f-class">
                 <div>
-                    <label for="">Economy ($100)</label>
-                    <input class="inp-style inp-width" type="number" name="">
+                    <label for="">Economy ($<span id="eco-class-price">100</span>)</label>
+                    <input id="eco-class-input" class="inp-style inp-width" type="number" value="0" name="">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span>+</span> <span>-</span> </p>
+                    <button id="count-plus" class="btn" value=""> + </button>
+                    <button id="count-minus" class="btn" value=""> - </button>
                 </div>
             </div>
             <div class="calculations">
@@ -73,7 +75,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p>$<span id="subtotal">0</span></p>
                     </div>
                 </div>
 
@@ -82,7 +84,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p>$ <span id="vat">0</span></p>
                     </div>
                 </div>
                 <hr>
@@ -91,7 +93,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p>$<span id="total-amount">0</span></p>
                     </div>
                 </div>
             </div>
@@ -100,11 +102,87 @@
 
         <div class="booking-content">
             <h1>discover <br> around the world</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias
+                veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise
+                voluptatibus quam</p>
         </div>
-    </section>
+        </section>
+        <script>
+            // start first class ticket related javascript code
+            const countIncrease = document.getElementById("count-increase");
+            countIncrease.addEventListener("click", function(){
+                fClassInput = document.getElementById("f-class-input");
+                parseFClassCount = parseInt(fClassInput.value);
+                newFClassTicketCount = parseFClassCount + 1;
+                document.getElementById("f-class-input").value = newFClassTicketCount;
 
-    <!--Thank You-->
+                // ticket price count related code
+                const fClassTicketPrice = document.getElementById("f-class-price").innerText;                
+                parsePrice = parseInt(fClassTicketPrice);
+                newFClassPrice = newFClassTicketCount * parsePrice;   
+            });
+
+            const countDecrease = document.getElementById("count-decrease");
+            countDecrease.addEventListener("click", function(){
+                fClassInput = document.getElementById("f-class-input");
+                parseFClassCount = parseInt(fClassInput.value);
+                if(parseFClassCount <= 0){
+                    document.getElementById("f-class-input").value = 0;
+                }
+                else{
+                    newFClassTicketCount = parseFClassCount - 1;
+                document.getElementById("f-class-input").value = newFClassTicketCount;
+                }                
+                // ticket price count related code
+                const fClassTicketPrice = document.getElementById("f-class-price").innerText;                
+                parsePrice = parseInt(fClassTicketPrice);
+                newFClassPrice = newFClassTicketCount * parsePrice;
+            });
+            // end first class ticket related javascript code
+
+            // start eco class related javascript code
+            const countPlus = document.getElementById("count-plus");
+            countPlus.addEventListener("click", function(){
+                ecoClassInput = document.getElementById("eco-class-input");
+                parseEcoClassCount = parseInt(ecoClassInput.value);
+                newEcoClassTicketCount = parseEcoClassCount + 1;
+                document.getElementById("eco-class-input").value = newEcoClassTicketCount;
+
+                // ticket price count related code
+                const ecoClassTicketPrice = document.getElementById("eco-class-price").innerText;
+                parsePrice = parseInt(ecoClassTicketPrice);
+                newEcoClassPrice = newEcoClassTicketCount * parsePrice;
+            });
+
+            const countMinus = document.getElementById("count-minus");
+            countMinus.addEventListener("click", function(){
+                ecoClassInput = document.getElementById("eco-class-input");
+                parseEcoClassCount = parseInt(ecoClassInput.value);
+                if(parseEcoClassCount <= 0){
+                    document.getElementById("eco-class-input").value = 0;
+                }
+                else{
+                    newEcoClassTicketCount = parseEcoClassCount - 1;
+                document.getElementById("eco-class-input").value = newEcoClassTicketCount;
+                }
+
+                // ticket price count related code
+                const ecoClassTicketPrice = document.getElementById("eco-class-price").innerText;
+                parsePrice = parseInt(ecoClassTicketPrice);
+                newEcoClassPrice = newEcoClassTicketCount * parsePrice;                
+            });
+                
+            const subtotal = document.getElementById("subtotal").innerText;
+                parseSubtotal = parseInt(subtotal);
+                newSubtotal = newFClassPrice + newEcoClassPrice;                
+                document.getElementById("subtotal").innerText = newSubtotal;
+                
+
+            
+            
+        </script>
+
+        <!--Thank You-->
 </body>
 
 </html>
